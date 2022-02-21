@@ -17,7 +17,7 @@ class DateTimeReminder(Iterable):
                      self.date.strftime("%m/%d/%YT%H:%M:%SZ"),
                      self.time.strftime('%I:%M %p')])
 
-    def is_due(self):
+    def is_due(self, date):
         return self.date < datetime.now()
 
 
@@ -25,6 +25,7 @@ class MorningReminder(DateTimeReminder):
     """A reminder that is due at 9am"""
     def __init__(self, text: str, date: str):
         super().__init__(text, date, '9am')
+
 
 class EveningReminder(DateTimeReminder):
     """A reminder that is due at 8pm"""
